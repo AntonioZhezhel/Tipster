@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main2Activity">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/TableLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="95dp">
+
+        <TableRow
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/txtTotalAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:text="Total amount"
+                />
+            <EditText
+                android:id="@+id/txtAmount2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:inputType="numberDecimal"
+                />
+
+
+        </TableRow>
+        <TableRow
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp" >
+
+            <TextView
+                android:id="@+id/txtPercentageTip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Percentage Tip:" />
+        </TableRow>
+        <TableRow
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <RadioGroup
+                android:id="@+id/radioGroupTips2"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="0"
+                android:layout_span="1"
+                android:checkedButton="@id/rbTen">
+
+                <RadioButton
+                    android:id="@+id/rbTen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10%"
+                    android:textSize="15sp"/>
+
+                <RadioButton
+                    android:id="@+id/rbOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Other"/>
+            </RadioGroup>
+<EditText
+    android:id="@+id/txtTipOther2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:inputType="numberDecimal"
+    android:layout_span="1"
+    android:layout_column="3"
+
+
+    />
+        </TableRow>
+        <TableRow>
+
+            <Button
+                android:id="@+id/buttonOk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:text="OK"
+                android:textSize="20sp"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/txtPeople2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:text="People"/>
+
+            <TextView
+                android:id="@+id/txtCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="Cost"/>
+            <TextView
+                android:id="@+id/txtTipAmount2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="Tip amount"/>
+
+        </TableRow>
+
+       <LinearLayout
+           android:id="@+id/linear"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+       </LinearLayout>
+    </TableLayout>
+
+
+</android.support.constraint.ConstraintLayout>

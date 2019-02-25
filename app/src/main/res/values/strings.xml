@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Tipster</string>
+    <string name="action_settings">Settings</string>
+    <string name="rdTxt15">rdTxt15</string>
+    <string name="TextLb3">Percentage tip:</string>
+    <string name="TextLb2">Number of people</string>
+    <string name="Totalamount">Total amount</string>
+    <string name="rdTxt20">rdTxt20</string>
+    <string name="Other">Other</string>
+    <string name="TextLb4">Tip amount:</string>
+    <string name="TextLb5">Total to pay:</string>
+    <string name="TextLb6">Total per person:</string>
+</resources>
