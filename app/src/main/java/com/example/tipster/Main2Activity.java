@@ -25,10 +25,10 @@ public class Main2Activity extends AppCompatActivity {
         Button addButton=(Button) findViewById(R.id.buttonOk);
 
         allEds=new ArrayList<View>();
+
+
+
 final LinearLayout linearLayout=(LinearLayout) findViewById(R.id.linear);
-
-
-
     addButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v)
@@ -36,6 +36,27 @@ final LinearLayout linearLayout=(LinearLayout) findViewById(R.id.linear);
         {
         counter++;
         final View view =getLayoutInflater().inflate(R.layout.custom_edittext_layout,null);
+
+            Button deleteField =(Button) findViewById(R.id.button2);
+            deleteField.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+
+
+
+                    try{
+                        ((LinearLayout)view.getParent()).removeView(view);
+                        allEds.remove(view);
+                    }catch (IndexOutOfBoundsException ex){
+                        ex.printStackTrace();
+                    }
+                }
+            });
+
+
+
             TextView textView=(TextView) view.findViewById(R.id.txtTipAmount3);
         EditText text=(EditText) view.findViewById(R.id.editTextEnterYourName);
         text.setText("Text Enter Your Name"+counter);
@@ -46,18 +67,6 @@ final LinearLayout linearLayout=(LinearLayout) findViewById(R.id.linear);
             allEds.add(view);
         linearLayout.addView(view);
 
-            Button deleteField =(Button) findViewById(R.id.button2);
-            deleteField.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    try{
-                        ((LinearLayout)view.getParent()).removeView(view);
-                        allEds.remove(view);
-                    }catch (IndexOutOfBoundsException ex){
-                        ex.printStackTrace();
-                    }
-                }
-            });
 
     }
 
