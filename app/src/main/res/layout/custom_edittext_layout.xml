@@ -2,54 +2,44 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
 
 
     <EditText
+        android:textSize="16.0sp"
         android:id="@+id/editTextEnterYourName"
-        android:layout_width="120dp"
+        android:layout_width="120.0dip"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:hint="Your Name"
+        android:layout_toLeftOf="@id/ediCost3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="0dp"
-        android:layout_toStartOf="@+id/ediCost3"
-        android:layout_toLeftOf="@+id/ediCost3"
-        android:text="Text Enter Your Name"
-        android:layout_marginEnd="0dp"
-        android:textSize="16sp"/>
-
+        android:layout_alignParentTop="true" />
 
     <EditText
         android:id="@+id/ediCost3"
-        android:layout_width="79dp"
+        android:layout_width="82dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_toStartOf="@id/txtTipAmount3"
-
-        android:layout_toLeftOf="@id/txtTipAmount3"
+        android:layout_toLeftOf="@+id/txtTipAmount3"
+        android:hint="Cost"
         android:inputType="numberDecimal"
-        android:text="Cost"
-        android:textSize="16sp"/>
-
+        android:textSize="16.0sp" />
     <TextView
+        android:textSize="16.0sp"
         android:id="@+id/txtTipAmount3"
-        android:layout_width="87dp"
-        android:layout_height="42dp"
-        android:layout_toStartOf="@+id/button2"
-        android:layout_toLeftOf="@+id/button2"
+        android:layout_width="87.0dip"
+        android:layout_height="42.0dip"
         android:text="Cost"
-        android:textSize="16sp"/>
-
-            <Button
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:text="X"
-                android:id="@+id/button2"
-                android:layout_alignBottom="@+id/editTextEnterYourName"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-
+        android:layout_toLeftOf="@id/buttonDelete" />
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="50.0dip"
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:layout_alignParentRight="true" />
 </RelativeLayout>
+
+
+

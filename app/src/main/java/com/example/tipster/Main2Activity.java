@@ -2,7 +2,10 @@ package com.example.tipster;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -15,63 +18,33 @@ import java.util.List;
 
 public class Main2Activity extends AppCompatActivity {
 
-    private List<View> allEds;
-    private int counter=0;
+    ItemsAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        Button addButton=(Button) findViewById(R.id.buttonOk);
-
-        allEds=new ArrayList<View>();
 
 
+        setupViews();
+}
 
-final LinearLayout linearLayout=(LinearLayout) findViewById(R.id.linear);
-    addButton.setOnClickListener(new View.OnClickListener() {
+void setupViews(){
+    RecyclerView recyclerView=(RecyclerView)findViewById(R.id.rvItems);
+    adapter=new ItemsAdapter();
+    recyclerView.setAdapter(adapter);
+    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    adapter.addMorreItems(Item.createItemsList(2));
+
+    Button addMoreButton=(Button)findViewById(R.id.buttonOk);
+    addMoreButton.setOnClickListener(new View.OnClickListener() {
         @Override
-        public void onClick(View v)
-
-        {
-        counter++;
-        final View view =getLayoutInflater().inflate(R.layout.custom_edittext_layout,null);
-
-            Button deleteField =(Button) findViewById(R.id.button2);
-            deleteField.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-
-
-
-
-                    try{
-                        ((LinearLayout)view.getParent()).removeView(view);
-                        allEds.remove(view);
-                    }catch (IndexOutOfBoundsException ex){
-                        ex.printStackTrace();
-                    }
-                }
-            });
-
-
-
-            TextView textView=(TextView) view.findViewById(R.id.txtTipAmount3);
-        EditText text=(EditText) view.findViewById(R.id.editTextEnterYourName);
-        text.setText("Text Enter Your Name"+counter);
-        text.setTextSize(16);
-            EditText text1=(EditText) view.findViewById(R.id.ediCost3);
-            text1.setText("Cost");
-            text1.setTextSize(16);
-            allEds.add(view);
-        linearLayout.addView(view);
-
-
-    }
-
-});
-
+        public void onClick(View v) {
+            adapter.addMorreItems(Item.createItemsList(2));
+        }
+    });
 
 
 }
