@@ -14,12 +14,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder> {
+public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder>  {
 
     private List<Item> mItems=new ArrayList<>();
+
+    private OnCostChangeListener mListener;
+    //public TextView txtTotalPrice;
+    //public Button calculate2;
+    //private double billAmount = 0.0;
+    //final static NumberFormat formatter=NumberFormat.getCurrencyInstance();
+
 
     public static final DiffUtil.ItemCallback<Item>DIFF_CALLBACK=
             new DiffUtil.ItemCallback<Item>() {
@@ -32,9 +40,22 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder> {
                 public boolean areContentsTheSame(Item oldItem, Item newItem) {
                     return(oldItem.getName()==newItem.getName()&&oldItem.getCost()==newItem.getCost());
                 }
+
             };
 
-    public ItemsAdapter(){super(DIFF_CALLBACK);}
+
+
+
+    public ItemsAdapter(OnCostChangeListener listener){
+        super(DIFF_CALLBACK);
+        this.mListener = listener;
+    }
+
+
+    public ItemsAdapter() {
+        super(DIFF_CALLBACK);
+    }
+
     public void addMorreItems(List<Item> newItems){
         int insertionPosition=mItems.size();
         mItems.addAll(newItems);
@@ -52,6 +73,8 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder> {
         return viewHolder;
 
     }
+
+
     @Override
     public void onBindViewHolder(ViewHolder viewHolder,int position){
         viewHolder.editTextName.setText(mItems.get(position).getName());
@@ -64,6 +87,31 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder> {
         editText1.setText(item.getCost());
     }
 
+  /*
+        @Override
+        public void onChange(List<Item> list) {
+            String sum = String.valueOf(0);
+            for (Item it : list) {
+                sum += it.getCost();
+            }
+
+            //txtTotalPrice.setText(formatter.format(sum));
+            //((TextView) txtTotalPrice.findViewById(R.id.txtTotalPrice)).setText(String.valueOf(sum));
+            final String finalSum = sum;
+            //calculate2= findViewById(R.id.calculate2);
+            calculate2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                        ((TextView) txtTotalPrice.findViewById(R.id.txtTotalPrice)).setText(String.valueOf(finalSum));
+
+                }
+            });
+
+        }
+
+*/
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -72,6 +120,10 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder> {
         public TextView txtTipAmount3;
         public Button buttonDelete;
         public  Button buttonOK;
+        public Button calculate2;
+        public TextView txtTotalPrice;
+
+
         public ViewHolder(View itemView){
             super(itemView);
             editTextCost3=(EditText)itemView.findViewById(R.id.ediCost3);
@@ -79,6 +131,8 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder> {
             txtTipAmount3=(TextView)itemView.findViewById(R.id.txtTipAmount3);
             buttonDelete=(Button)itemView.findViewById(R.id.buttonDelete);
             buttonOK=(Button)itemView.findViewById(R.id.buttonOk);
+            calculate2=(Button) itemView.findViewById(R.id.calculate2);
+            txtTotalPrice=(TextView) itemView.findViewById(R.id.txtTotalPrice);
 
             buttonDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -90,6 +144,14 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder> {
                     }catch (ArrayIndexOutOfBoundsException e){e.printStackTrace();}
                 }
             });
+/*
+            calculate2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    txtTotalPrice.setText(formatter.format(sum));
+                }
+            });
+*/
             editTextName.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -116,6 +178,14 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder> {
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     mItems.get(getAdapterPosition()).setmCost(editTextCost3.getText().toString());
+                    //billAmount = Double.parseDouble(s.toString()) / 100.0;
+                   // double total=Double.parseDouble(editTextCost3.getText().toString()) +1;
+                   // txtTotalPrice.setText(formatter.format(total));
+                    if (mListener != null) {
+                        mListener.onChange(mItems);
+                    }
+
+
 
                 }
 
@@ -125,6 +195,25 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder> {
                 }
             });
 
+
+
+
+
+
+
         }
+
+        /*public List<Item> getData(){
+            return mItems;
+        }
+        private void calculate(){
+
+            double total=Double.parseDouble(editTextCost3.getText().toString()) +1;
+
+            txtTotalPrice.setText(formatter.format(total));
+            }*/
+        }
+
+
     }
-}
+
