@@ -38,7 +38,7 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder>  {
 
                 @Override
                 public boolean areContentsTheSame(Item oldItem, Item newItem) {
-                    return(oldItem.getName()==newItem.getName()&&oldItem.getCost()==newItem.getCost());
+                    return(oldItem.getName().equals(newItem.getName()) && oldItem.getCost().equals(newItem.getCost()));
                 }
 
             };

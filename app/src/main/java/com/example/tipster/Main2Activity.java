@@ -1,5 +1,6 @@
 package com.example.tipster;
 
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,7 @@ public class Main2Activity extends AppCompatActivity implements OnCostChangeList
 
     ItemsAdapter adapter;
    final static NumberFormat formatter=NumberFormat.getCurrencyInstance();
-  //private OnCostChangeListener mListener;
+   //private OnCostChangeListener mListener;
 
 
 
@@ -41,9 +42,11 @@ public class Main2Activity extends AppCompatActivity implements OnCostChangeList
        // ediCost3=(EditText) findViewById(R.id.ediCost3);
         txtTotalPrice=(TextView) findViewById(R.id.txtTotalPrice);
         calculate2=(Button) findViewById(R.id.calculate2);
-       // calculate2.setOnClickListener(mClickListener);
+        //calculate2.setOnClickListener( mClickListener);
 
         setupViews();
+
+
 }
 
 void setupViews(){
@@ -64,6 +67,22 @@ void setupViews(){
 
 
 }
+   /* OnCostChangeListener mClickListener=new OnCostChangeListener() {
+
+        @Override
+        public void onChange(List<Item> list) {
+
+            String sum= String.valueOf(0);
+            for (Item it : list){
+                sum += (it.getCost());
+            }
+            final String finalSum = sum;
+
+            txtTotalPrice.setText(formatter.format(finalSum));
+        }
+    };*/
+
+
 
     @Override
     public void onChange(List<Item> list) {

@@ -5,39 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/RelLayActivity2"
     tools:context=".Main2Activity">
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/TableLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:stretchColumns="1"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="95dp">
 
-
-        <TableRow
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp" >
 
             <TextView
                 android:id="@+id/txtPercentageTip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Percentage Tip:" />
-        </TableRow>
-        <TableRow
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp">
+
+
 
             <RadioGroup
                 android:id="@+id/radioGroupTips2"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_column="0"
-                android:layout_span="1"
-                android:checkedButton="@id/rbTen">
+                                android:checkedButton="@id/rbTen"
+                android:layout_below="@+id/txtPercentageTip">
 
                 <RadioButton
                     android:id="@+id/rbTen"
@@ -53,68 +40,74 @@
                     android:textSize="15sp"
                     android:text="Other"/>
             </RadioGroup>
-<EditText
-    android:id="@+id/txtTipOther2"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:inputType="numberDecimal"
-    android:layout_span="1"
-    android:layout_column="3"
+
+    <EditText
+        android:id="@+id/txtTipOther2"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPercentageTip"
+        android:layout_alignParentRight="true"
+        android:inputType="numberDecimal" />
 
 
-    />
-        </TableRow>
-        <TableRow>
 
             <Button
                 android:id="@+id/buttonOk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="3"
+                android:layout_below="@+id/txtTipOther2"
+                android:layout_alignParentRight="true"
                 android:text="OK"
                 android:textSize="20sp"
                 />
-        </TableRow>
-        <TableRow>
+
+
             <TextView
                 android:id="@+id/txtPeople2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="0"
+                android:layout_below="@+id/buttonOk"
                 android:text="People"/>
 
-            <TextView
-                android:id="@+id/txtCost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="Cost"/>
-            <TextView
-                android:id="@+id/txtTipAmount2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="Tip amount"/>
+    <TextView
+        android:id="@+id/txtCost"
+        android:layout_width="53dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonOk"
+        android:layout_marginLeft="127dp"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@+id/txtPeople2"
+        android:text="Cost" />
 
-        </TableRow>
+    <TextView
+        android:id="@+id/txtTipAmount2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonOk"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="0dp"
+        android:layout_toRightOf="@+id/txtCost"
+        android:text="Tip amount" />
+
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvItems"
             android:layout_width="match_parent"
-            android:layout_height="328dp" />
+            android:layout_height="328dp"
+            android:layout_above="@+id/save"
+            android:layout_below="@+id/txtPeople2"/>
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+
 
             <TextView
                 android:id="@+id/txtTotalPrice"
                 android:layout_width="108dp"
                 android:layout_height="34dp"
                 android:layout_alignParentLeft="true"
-                android:text="" />
+                android:text=""
+                android:layout_alignParentBottom="true"
+                />
 
             <Button
                 android:id="@+id/save"
@@ -122,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/calculate2"
                 android:text="save"
+                android:layout_alignParentBottom="true"
                 />
 
             <Button
@@ -129,10 +123,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="calculate" />
+                android:text="calculate"
+                android:layout_alignParentBottom="true"/>
 
-        </RelativeLayout>
-    </TableLayout>
+
+
 
 
 </RelativeLayout>
