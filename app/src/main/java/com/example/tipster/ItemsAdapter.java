@@ -1,7 +1,6 @@
 package com.example.tipster;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +36,7 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder>  {
 
                 @Override
                 public boolean areContentsTheSame(Item oldItem, Item newItem) {
-                    return(oldItem.getName().equals(newItem.getName()) && oldItem.getCost().equals(newItem.getCost()));
+                    return oldItem.getId()==newItem.getId();
                 }
 
             };
@@ -52,9 +50,6 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder>  {
     }
 
 
-    public ItemsAdapter() {
-        super(DIFF_CALLBACK);
-    }
 
     public void addMorreItems(List<Item> newItems){
         int insertionPosition=mItems.size();
@@ -78,13 +73,13 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder>  {
     @Override
     public void onBindViewHolder(ViewHolder viewHolder,int position){
         viewHolder.editTextName.setText(mItems.get(position).getName());
-        viewHolder.editTextCost3.setText(mItems.get(position).getCost());
+        viewHolder.editTextCost3.setText(""+mItems.get(position).getCost());
 
-        Item item=getItem(position);
-        EditText editText=viewHolder.editTextName;
-        editText.setText(item.getName());
-        EditText editText1=viewHolder.editTextCost3;
-        editText1.setText(item.getCost());
+//        Item item=getItem(position);
+//        EditText editText=viewHolder.editTextName;
+//        editText.setText(item.getName());
+//        EditText editText1=viewHolder.editTextCost3;
+//        editText1.setText(item.getCost());
     }
 
   /*
@@ -177,7 +172,15 @@ public class ItemsAdapter extends ListAdapter<Item,ItemsAdapter.ViewHolder>  {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    mItems.get(getAdapterPosition()).setmCost(editTextCost3.getText().toString());
+                    String stringValue =editTextCost3.getText().toString();
+                    int intValue;
+                    try {
+                       intValue  =Integer.parseInt(stringValue);
+                    } catch (NumberFormatException e){
+                       intValue = 0;
+                    }
+
+                    mItems.get(getAdapterPosition()).setCost(intValue);
                     //billAmount = Double.parseDouble(s.toString()) / 100.0;
                    // double total=Double.parseDouble(editTextCost3.getText().toString()) +1;
                    // txtTotalPrice.setText(formatter.format(total));
